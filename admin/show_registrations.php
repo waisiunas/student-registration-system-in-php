@@ -2,11 +2,20 @@
 
 <?php
 
-$sql = "SELECT * FROM `students`";
+// $sql = "SELECT students.name AS student_name, students.reg_no AS reg_no, courses.name AS course_name FROM `students` 
+// INNER JOIN `registration` ON students.id = registration.student_id
+// INNER JOIN `courses` ON registration.course_id = courses.id";
+
+$sql = "SELECT s.name AS `student_name`, s.reg_no AS `reg_no`, c.name AS `course_name`, r.id AS `reg_id` 
+FROM `students` s 
+INNER JOIN `registration` r ON s.id = r.student_id
+INNER JOIN `courses` c ON r.course_id = c.id";
 $result = $conn->query($sql);
 
 $students = $result->fetch_all(MYSQLI_ASSOC);
-
+echo "<pre>";
+print_r($students);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -20,29 +29,22 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
         <div class="main">
 
             <?php require_once 'includes/navbar.php'; ?>
+            
             <main class="content">
                 <div class="container-fluid p-0">
 
                     <div class="row">
                         <div class="col-6">
-                            <h1 class="h3 mb-3">Students</h1>
+                            <h1 class="h3 mb-3">Registered Students</h1>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="add_student.php" class="btn btn-primary">Add Student</a>
+                            <a href="registration.php" class="btn btn-primary">Register Student</a>
                         </div>
                     </div>
-
-
-
-
 
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Students</h5>
-
-                                </div>
                                 <div class="card-body">
                                     <?php
                                     if (count($students) > 0) { ?>
@@ -52,7 +54,7 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Reg. No.</th>
-                                                    <th>Created At</th>
+                                                    <th>Course</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -61,12 +63,12 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
                                                 foreach ($students as $student) {
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $student['name']; ?></td>
+                                                        <td><?php echo $student['student_name']; ?></td>
                                                         <td>aci-<?php echo $student['reg_no']; ?></td>
-                                                        <td><?php echo $student['created_at']; ?></td>
+                                                        <td><?php echo $student['course_name']; ?></td>
                                                         <td>
-                                                            <a href="./edit_student.php?id=<?php echo $student['id']; ?>" class="btn btn-primary">Edit</a>
-                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteStudent(<?php echo $student['id']; ?>)">
+                                                            <a href="./edit_registartion.php?id=<?php echo $student['reg_id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRegistration(<?php echo $student['reg_id']; ?>)">
                                                                 Delete
                                                             </button>
 
@@ -118,9 +120,9 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
     <script src="./assets/js/app.js"></script>
 
     <script>
-        function deleteStudent (id) {
+        function deleteRegistration (id) {
             btnDelete = document.getElementById('btn-delete');
-            btnDelete.setAttribute('href', 'delete_student.php?id=' + id);
+            btnDelete.setAttribute('href', 'delete_registration.php?id=' + id);
         }
     </script>
 

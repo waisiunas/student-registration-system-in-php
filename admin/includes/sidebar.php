@@ -19,7 +19,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="make_registration.php">
+                <a class="sidebar-link" href="show_registrations.php">
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Registration</span>
                 </a>
             </li>

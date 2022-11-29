@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 04:30 PM
+-- Generation Time: Nov 29, 2022 at 04:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `created_at`) VALUES
+(1, 'The Admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2022-11-29 13:37:31');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `courses`
 --
 
@@ -38,7 +59,7 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `name`, `created_at`) VALUES
-(1, 'Web Programing (Chapa)', '2022-11-28 13:51:45'),
+(1, 'Chappa Class', '2022-11-28 13:51:45'),
 (2, 'GD', '2022-11-28 13:51:45'),
 (3, 'DM', '2022-11-28 13:51:45'),
 (4, 'VE', '2022-11-28 13:51:45'),
@@ -66,7 +87,8 @@ INSERT INTO `registration` (`id`, `student_id`, `course_id`, `created_at`) VALUE
 (2, 2, 2, '2022-11-28 13:55:59'),
 (3, 3, 1, '2022-11-28 13:55:59'),
 (4, 4, 3, '2022-11-28 13:55:59'),
-(5, 5, 5, '2022-11-28 13:55:59');
+(5, 5, 5, '2022-11-28 13:55:59'),
+(6, 3, 2, '2022-11-29 15:26:23');
 
 -- --------------------------------------------------------
 
@@ -101,6 +123,13 @@ INSERT INTO `students` (`id`, `name`, `reg_no`, `created_at`) VALUES
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -126,6 +155,12 @@ ALTER TABLE `students`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
@@ -135,7 +170,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`
