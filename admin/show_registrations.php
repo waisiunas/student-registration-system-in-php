@@ -13,9 +13,9 @@ INNER JOIN `courses` c ON r.course_id = c.id";
 $result = $conn->query($sql);
 
 $students = $result->fetch_all(MYSQLI_ASSOC);
-echo "<pre>";
-print_r($students);
-echo "</pre>";
+// echo "<pre>";
+// print_r($students);
+// echo "</pre>";
 ?>
 
 <!DOCTYPE html>
