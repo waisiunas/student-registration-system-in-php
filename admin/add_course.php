@@ -6,7 +6,7 @@ $error = $success = $name = '';
 if (isset($_POST['submit'])) {
     $name = htmlspecialchars($_POST['name']);
 
-    if (empty ($name)) {
+    if (empty($name)) {
         $error = "Name please";
     } else {
         $sql = "INSERT INTO `courses`(`name`) VALUES ('${name}')";
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             <main class="content">
                 <div class="container-fluid p-0">
 
-                <div class="row">
+                    <div class="row">
                         <div class="col-6">
                             <h1 class="h3 mb-3">Students</h1>
                         </div>

@@ -13,9 +13,6 @@ INNER JOIN `courses` c ON r.course_id = c.id";
 $result = $conn->query($sql);
 
 $students = $result->fetch_all(MYSQLI_ASSOC);
-// echo "<pre>";
-// print_r($students);
-// echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +35,7 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
                             <h1 class="h3 mb-3">Registered Students</h1>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="registration.php" class="btn btn-primary">Register Student</a>
+                            <a href="add_registration.php" class="btn btn-primary">Register Student</a>
                         </div>
                     </div>
 
@@ -67,7 +64,8 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
                                                         <td>aci-<?php echo $student['reg_no']; ?></td>
                                                         <td><?php echo $student['course_name']; ?></td>
                                                         <td>
-                                                            <a href="./edit_registartion.php?id=<?php echo $student['reg_id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="./edit_registration.php?id=<?php echo $student['reg_id']; ?>" class="btn btn-primary">Edit</a>
+                                                            
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteRegistration(<?php echo $student['reg_id']; ?>)">
                                                                 Delete
                                                             </button>

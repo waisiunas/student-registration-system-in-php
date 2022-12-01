@@ -1,8 +1,8 @@
 <?php 
 session_start();
 if(isset($_SESSION['admin_id']) && !empty($_SESSION['admin_id'])) {
-    $id = $_SESSION['admin_id'];
-    $sql = "SELECT * FROM `admins` WHERE `id` = $id";
+    $admin_id = $_SESSION['admin_id'];
+    $sql = "SELECT * FROM `admins` WHERE `id` = $admin_id";
     $result = $conn->query($sql);
     $admin = $result->fetch_assoc();
 } else {

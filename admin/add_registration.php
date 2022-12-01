@@ -44,7 +44,14 @@ if (isset($_POST['submit'])) {
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Registration</h1>
+                <div class="row">
+                        <div class="col-6">
+                            <h1 class="h3 mb-3">Registration</h1>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a href="./show_registrations.php" class="btn btn-primary">Registrations</a>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-12">
